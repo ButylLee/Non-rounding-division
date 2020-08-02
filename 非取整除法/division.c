@@ -1,6 +1,6 @@
 ﻿#include <stdio.h>
 #include <stdlib.h>
-#define IS_END_ZERO 1 //若除尽末尾是否输出0
+#define IS_END_ZERO 0 //若除尽末尾是否输出0
 
 int main()
 {
@@ -10,7 +10,6 @@ int main()
 	scanf("%d %d %u %u", &dividend, &divisor, &precision, &isRound);
 	if (divisor == 0 || precision & 0xF << 30)					//除数为0和控制精度范围
 		exit(-1);
-
 
 	char* decimal = NULL;
 	if ((decimal = (char*)calloc(precision + 1, sizeof(char))) == NULL)
@@ -29,16 +28,15 @@ int main()
 		decimal[i] = remainder / divisor;
 		remainder %= divisor;
 
-		if (!IS_END_ZERO && remainder == 0)						/***除尽时末尾不保留0的处理***/
+		if (!IS_END_ZERO && remainder == 0)						//除尽时末尾不保留0的处理
 		{
-			if (precision != i)									//判断除尽时数组长度是否 不能 刚好容纳最后一位非0数
+			if (i < precision)
 				precision = i + 1;
 			break;
 		}
 	}
 
-	/***四舍五入***/
-	if (isRound && decimal[precision] > 4)
+	if (isRound && decimal[precision] > 4)						//四舍五入
 	{
 		int i = 0;
 		do {
