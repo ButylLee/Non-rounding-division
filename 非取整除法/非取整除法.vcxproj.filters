@@ -15,8 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="源.c">
+    <ClCompile Include="division.c">
       <Filter>源文件</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="illustration.md">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>
