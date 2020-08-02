@@ -1,7 +1,7 @@
 ﻿#include <stdio.h>
 #include <stdlib.h>
 #define IS_END_ZERO 1 //若除尽末尾是否输出0
-//精度上限2^30-1位，约10亿位
+
 int main()
 {
 	int dividend, divisor, quotient, remainder;
@@ -12,7 +12,7 @@ int main()
 		exit(-1);
 
 
-	char* decimal = NULL;							//创建变长数组，多一位用于四舍五入，使用char储存一位数以节省空间
+	char* decimal = NULL;
 	if ((decimal = (char*)calloc(precision + 1, sizeof(char))) == NULL)
 	{
 		printf("memory allocated failed!");
@@ -22,12 +22,12 @@ int main()
 	quotient = dividend / divisor;
 	remainder = dividend % divisor;
 	if (quotient < 0)
-		divisor *= -1;								//商为负数的处理
+		divisor *= -1;											//结果为负数的处理
 	for (unsigned i = 0; i < precision + 1; i++)
 	{
-		remainder *= 10;										/****核心步骤****/
-		decimal[i] = remainder / divisor;						/****核心步骤****/
-		remainder %= divisor;									/****核心步骤****/
+		remainder *= 10;
+		decimal[i] = remainder / divisor;
+		remainder %= divisor;
 
 		if (!IS_END_ZERO && remainder == 0)						/***除尽时末尾不保留0的处理***/
 		{
