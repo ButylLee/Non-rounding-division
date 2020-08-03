@@ -36,7 +36,7 @@
 
 - `LINE 15` 
 
-  在堆内存中创建变长数组 `decimal` 并初始化为0，这里数组长度比精度 `precision` 多一位是用于四舍五入用，注意这个细节，后面有地方与它相关。使用char是为了节省空间~~虽然没必要~~，计算过程中数组的元素总为正数所以这里用 `signed char` 或 `unsigned char` 都可以，**MSVC**中 `char` 的实现为 `signed char` 。
+  在堆中创建变长数组 `decimal` 并初始化为0，这里数组长度比精度 `precision` 多一位是用于四舍五入用，注意这个细节，后面有地方与它相关。使用char是为了节省空间~~虽然没必要~~，计算过程中数组的元素总为正数所以这里用 `signed char` 或 `unsigned char` 都可以，**MSVC**中 `char` 的实现为 `signed char` 。
 
 - `LINE 21-22` 
 
