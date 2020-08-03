@@ -1,6 +1,6 @@
 ﻿#include <stdio.h>
 #include <stdlib.h>
-#define IS_END_ZERO 0 //若除尽末尾是否输出0
+#define IS_END_ZERO 1 //若除尽末尾是否输出0
 
 int main()
 {
@@ -40,8 +40,7 @@ int main()
 	{
 		int i = 0;
 		do {
-			if (i != 0)
-				decimal[precision - i] = 0;						//将为10的上一位置0
+			decimal[precision - i] = 0;							//将为10的上一位置0
 			i++;
 			precision - i + 1
 				? decimal[precision - i]++
